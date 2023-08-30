@@ -1,47 +1,25 @@
-
-
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Incrementing Number with Cookie</title>
-</head>
-<body>
-    <h1>Incrementing Number: <span id="counter">0</span></h1>
-    
-    <script>
-        // 開始時にCookieから数字を取得
-        let count = parseInt(getCookie("count")) || 0;
-        document.getElementById("counter").textContent = count;
-
-        // 数字をクリックすると増加し、Cookieに保存
-        document.getElementById("counter").addEventListener("click", function() {
-
-        });
-
-        // Cookieを設定する関数
-        function setCookie(name, value, days) {
-            const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
-            document.cookie = `${name}=${value}; expires=${expires}; path=/`;
-        }
-
-        // Cookieから値を取得する関数
-        function getCookie(name) {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) return parts.pop().split(";").shift();
-        }
-    </script>
-          <script>
-    // Cookieに保存されている数字を取得
-
-    // 1秒ごとに数字を1増やすタイマーを作成
-    setInterval(function() {
-      count++;
-                    document.getElementById("counter").textContent = count;
-            setCookie("count", count, 365);
-      document.cookie = "count=" + number;
-    }, 100);
-  </script>
-</body>
-</html>
+<h1 id="counter">0</h1>
+<script>
+let count = parseInt(getCookie("count")) || 0;
+document.getElementById("counter").textContent = count;
+document.getElementById("counter").addEventListener("click", function() {});
+function setCookie(name, value, days) {
+const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
+document.cookie = `${name}=${value}; expires=${expires}; path=/`;}
+function getCookie(name) {
+const value = `; ${document.cookie}`;
+const parts = value.split(`; ${name}=`);
+if (parts.length === 2) return parts.pop().split(";").shift();}
+</script>
+<script>
+setInterval(function() {
+count++;
+}, 100);
+</script>
+<script>
+setInterval(function() {
+document.getElementById("counter").textContent = count;
+setCookie("count", count, 365);
+document.cookie = "count=" + number;
+}, 0);
+</script>
