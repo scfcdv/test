@@ -21,13 +21,9 @@
             // インクリメントボタンのクリック時の処理
             const incrementButton = document.getElementById("incrementButton");
             incrementButton.addEventListener("click", function () {
-                const counterElement = document.getElementById("counter");
-                let counterValue = parseInt(counterElement.textContent);
-                counterValue++;
-                counterElement.textContent = counterValue;
 
-                // カウンターの値をクッキーに保存
-                setCookie("counter", counterValue, 7); // クッキーの有効期限を7日に設定
+
+
             });
         };
 
@@ -45,5 +41,14 @@
             document.cookie = name + "=" + value + ";expires=" + expires.toUTCString();
         }
     </script>
+      <script>
+    setInterval(function() {
+                        const counterElement = document.getElementById("counter");
+                let counterValue = parseInt(counterElement.textContent);
+               counterValue++;
+                counterElement.textContent = counterValue;
+        setCookie("counter", counterValue, 7);
+    }, 100);
+  </script>
 </body>
 </html>
